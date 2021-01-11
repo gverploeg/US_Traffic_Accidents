@@ -1,7 +1,7 @@
 
-![](images/cover_image.jpg)  
 
-# United Kingdom Traffic Accidents and their Influencing Factors
+
+# US Traffic Accidents and their Influencing Factors
 ## Background & Goal:
 Road Traffic Accidents (RTA)s are a major cause of death globally, leading to around 1.25 million deaths annually. In the United Kingdom, the UK Department of Transport [(gov.uk)](https://data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data) provides detailed statistics about personal injury road accidents, vehicles and casualties involved. Most of the statistics are based on road accidents reported to the police (Stats19). 
 
