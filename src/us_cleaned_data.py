@@ -168,7 +168,7 @@ def one_hot_encoding(df, categorical_feature):
     Converts categorical variables to numerical in an interpretable format
     ARGS: 
         df - dataframe
-        categorical_feature 
+        categorical_feature - categorical column
     RETURNS
         dataframe with added features
     '''
