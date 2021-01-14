@@ -1,5 +1,5 @@
 
-
+![](images/Traffic_photo.jpg)
 
 # US Traffic Accidents and their Influencing Factors
 ## Background & Goal:
