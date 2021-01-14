@@ -163,19 +163,6 @@ def to_bool(df, feature):
     df[feature] = df[feature].astype(int)
     return df
 
-def one_hot_encoding(df, categorical_feature):
-    '''
-    Converts categorical variables to numerical in an interpretable format
-    ARGS: 
-        df - dataframe
-        categorical_feature - categorical column
-    RETURNS
-        dataframe with added features
-    '''
-    dummies = pd.get_dummies(df[[categorical_feature]])
-    new_df = pd.concat([df, dummies], axis=1)
-    return new_df
-
 if __name__ == '__main__':
 
     # Read csv file into a pandas dataframe
@@ -238,6 +225,9 @@ if __name__ == '__main__':
     df_full['Season'] = df_full["Month"].replace({1: 'Winter', 2: 'Winter', 3: 'Spring', 4: 'Spring', 5: 'Spring', 6: 'Summer',
                                         7: 'Summer', 8: 'Summer', 9: 'Fall', 10: 'Fall', 11: 'Fall', 12: 'Winter'})
 
+        #Create Binary Day and Night
+    df_full["Civil_Twilight"].replace({'Night':0, 'Day':1}, inplace=True)
+
     # Convert Boolean Values to Ints
     list_of_bool_feats = ['Amenity', 'Bump', 'Crossing',
        'Give_Way', 'Junction', 'No_Exit', 'Railway', 'Roundabout', 'Station',
@@ -268,30 +258,5 @@ if __name__ == '__main__':
                     "Nautical_Twilight", "Astronomical_Twilight"]
     df_full = df_full.drop(features_to_drop, axis=1)
 
-    # One_Hot Features
-    '''
-    Dropped the original feature and dropped one of new data frames
-    ''' 
-    df_full = one_hot_encoding(df_full,'Road_Type')
-    df_full.drop(['Road_Type'],axis=1,inplace=True)
-    df_full.drop(['Road_Type_Single carriageway'],axis=1,inplace=True)
-
-    df_full = one_hot_encoding(df_full,'Road_Surface_Conditions')
-    df_full.drop(['Road_Surface_Conditions'],axis=1,inplace=True)
-    df_full.drop(['Road_Surface_Conditions_Dry'],axis=1,inplace=True)
-
-    df_full = one_hot_encoding(df_full,'Pedestrian_Crossing-Physical_Facilities')
-    df_full.drop(['Pedestrian_Crossing-Physical_Facilities'],axis=1,inplace=True)
-    df_full.drop(['Pedestrian_Crossing-Physical_Facilities_No physical crossing within 50 meters'],axis=1,inplace=True)
-
-    df_full = one_hot_encoding(df_full,'Light_Conditions')
-    df_full.drop(['Light_Conditions'],axis=1,inplace=True)
-    df_full.drop(['Light_Conditions_Daylight: Street light present'],axis=1,inplace=True)
-
-    df_full = one_hot_encoding(df_full,'Weather_Conditions')
-    df_full.drop(['Weather_Conditions'],axis=1,inplace=True)
-    df_full.drop(['Weather_Conditions_Fine without high winds'],axis=1,inplace=True)
-
-
     # Save as CSV
-    # df_full.to_csv('../data/Cleaned_data.csv')
+    df_full.to_csv('../data/total_cleaned_data.csv')
