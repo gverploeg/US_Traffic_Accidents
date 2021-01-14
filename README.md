@@ -1,9 +1,9 @@
 
-![](../images/Traffic_photo.jpg)
+![](Images/Traffic_photo.jpg)
 
 # US Traffic Accidents and their Influencing Factors
 ## Background & Goal:
-It's no secret that the United States loves to drive. With over than 260 million vehicles in operation, car transprotion has been engrained in the American pysche. This love affair hasn't come without flaws though. In the United States, the average number of car accidents each year is around 6 million, resulting in more than 38,000 deaths on US roadways. While vehicles may be an essential part of many Americans lives, its important to explore some of the data behind these accidents and assess how it can be used to save lives in the future. [(US Accident Dataset)](https://www.kaggle.com/sobhanmoosavi/us-accidents) provides detailed statistics about personal injury road accidents, vehicles and locations involved. These statistics compiled by various entities around the country, such as law enforcement agencies, traffic cameras, and numerous state Departments of Transportation.
+It's no secret that the United States loves to drive. With over than 260 million vehicles in operation, car transprotion has been engrained in the American pysche. This love affair hasn't come without flaws though. In the United States, the average number of car accidents each year is around 6 million, resulting in more than 38,000 deaths on US roadways. While vehicles may be an essential part of many Americans lives, its important to explore some of the data behind these accidents and assess how it can be used to save lives in the future. [US Accident Dataset](https://www.kaggle.com/sobhanmoosavi/us-accidents) provides detailed statistics about personal injury road accidents, vehicles and locations involved. These statistics were compiled by various entities around the country, such as law enforcement agencies, traffic cameras, and numerous state Departments of Transportation.
 
 The goal of this repository is to help emergency services identify the key elements of severe accidents, and understand trends of where and when they are most needed. 
 
@@ -32,8 +32,8 @@ Inferential Assumptions:
 3. No multicollinearity: the independent variables are not highly correlated with each other 
 
 
-![](../images/Time_total.png)
-![](../images/sev_time_total.png)
+![](Images/Time_total.png)
+![](Images/sev_time_total.png)
 
 Applied Feature Engineering to the Time column, where the hour was extracted and used to create a binary Rush Hour feature, which in the UK is generally considered to be between 07:00-10:00 and 16:00-19:00
 * Appears to show lower proportion during typical busy hours
