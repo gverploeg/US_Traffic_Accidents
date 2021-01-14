@@ -1,5 +1,5 @@
 
-![] (images/Traffic_photo.jpg)
+![](..images/Traffic_photo.jpg)
 
 # US Traffic Accidents and their Influencing Factors
 ## Background & Goal:
@@ -32,8 +32,8 @@ Inferential Assumptions:
 3. No multicollinearity: the independent variables are not highly correlated with each other 
 
 
-![] (images/Time_total.png)
-![] (images/sev_time_total.png)
+![](..images/Time_total.png)
+![](..images/sev_time_total.png)
 
 Applied Feature Engineering to the Time column, where the hour was extracted and used to create a binary Rush Hour feature, which in the UK is generally considered to be between 07:00-10:00 and 16:00-19:00
 * Appears to show lower proportion during typical busy hours
