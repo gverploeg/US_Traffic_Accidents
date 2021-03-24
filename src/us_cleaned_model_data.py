@@ -62,7 +62,7 @@ if __name__ == '__main__':
     df_l = one_hot_encoding(df_l,'Region', ['Region', 'Region_Southeast'])
     df_l = one_hot_encoding(df_l,'Side', ['Side', 'Side_L'])
 
-        # Create Target Groups
+    # Create Target Groups
     df_l["Severity"].replace({1:0, 2:0, 3:0, 4:1}, inplace=True)
 
     list_of_features_norm = ['Temperature(F)', 'Humidity(%)', 'Pressure(in)', 'Visibility(mi)',
