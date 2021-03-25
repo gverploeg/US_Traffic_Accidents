@@ -58,7 +58,7 @@ def accuracy(features, df):
 
 if __name__ == '__main__':
     # Read csv file into a pandas dataframe
-    df = pd.read_csv('../data/nonlinear_data.csv')
+    df = pd.read_csv('../data/logistic_data.csv')
 
     # Features to input in model
     full_features = df[['Temperature(F)', 'Humidity(%)',
@@ -73,11 +73,11 @@ if __name__ == '__main__':
        'Weather_Condition_Snow', 'Weather_Condition_Thunderstorm']]
 
     # Display the main classification metrics 
-    print(logit_mod(full_features, df))
+    logit_mod(full_features, df)
 
     # Calculating VIF for each feature 
-    print(vif(full_features, df))
+    vif(full_features, df)
 
     # Display Accuracy Metric
-    print(accuracy(full_features, df))
+    accuracy(full_features, df)
     
