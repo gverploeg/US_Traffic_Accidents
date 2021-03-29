@@ -55,6 +55,7 @@ if __name__ == '__main__':
     df = pd.read_csv('../data/total_cleaned_data.csv')
     df_log = df.copy()
     df_nonlin  = df.copy()
+    df_rock_nonlin = df.copy()
 
     # Create Logistic Model Data
     df_l = one_hot_encoding(df_log,'Weather_Condition', ['Weather_Condition', 'Weather_Condition_Cloudy'])
@@ -80,10 +81,20 @@ if __name__ == '__main__':
     df_nl = one_hot_encoding(df_nl,'Region', ['Region'])
     df_nl = one_hot_encoding(df_nl,'Side', ['Side', 'Side_L'])
 
-        # Create Target Groups
+    # Create Target Groups
     df_nl["Severity"].replace({1:0, 2:0, 3:0, 4:1}, inplace=True)
 
     final_nonlin_df = balance_data(df_nl, 'Severity')
 
     # Save as CSV
     final_nonlin_df.to_csv('../data/nonlinear_data.csv')
+
+    # Create CSV file for Nonlinear Rockies Region
+    df_rock = one_hot_encoding(df_rock_nonlin,'Weather_Condition', ['Weather_Condition'])
+    df_rock = one_hot_encoding(df_rock,'Season', ['Season'])
+    df_rock = one_hot_encoding(df_rock,'Side', ['Side', 'Side_L'])
+    df_rock["Severity"].replace({1:0, 2:0, 3:0, 4:1}, inplace=True)
+    df_rock = df_rock[(df_rock['Region'] == 'Rockies')]
+    final_rock_df = balance_data(df_rock, 'Severity')
+    final_rock_df.to_csv('../data/nonlinear_rockies_data.csv')
+
