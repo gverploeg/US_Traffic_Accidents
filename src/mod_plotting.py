@@ -119,7 +119,7 @@ def decision_tree(df):
                 filled=True, 
                 rounded=True, 
                 fontsize=14)
-    plt.savefig("rockies_decision_tree.png")
+    plt.savefig("../Images/rockies_decision_tree.png")
     plt.show()
 
 if __name__ == '__main__':
