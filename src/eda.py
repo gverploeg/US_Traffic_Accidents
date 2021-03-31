@@ -39,7 +39,7 @@ def time_total(df, save_loc):
     hours=['12am', '1am', '2am', '3am', '4am','5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm',
             '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',]
 
-    fig, ax = plt.subplots(1, figsize=(15, 6))
+    fig, ax = plt.subplots(1, figsize=(14, 6))
     x1 = tm.iloc[:, 0]
     y1 = tm.iloc[:,1]
     ax.bar(x1, y1, color='royalblue', width=.3, align='edge')
@@ -47,7 +47,7 @@ def time_total(df, save_loc):
     plt.xticks(x1, fontsize=13)
     ax.set_xticklabels(labels=hours, fontsize=16, rotation=45,)
     ax.set_ylabel("Number of Accidents", fontsize=18)
-    ax.set_title("Total Accidents by Time of Day", fontsize=20)
+    ax.set_title("Total Accidents by Time of Day", fontsize=22)
     fig.tight_layout()
     plt.savefig(save_loc,dpi=150, bbox_inches = 'tight')
     plt.show()
@@ -75,7 +75,7 @@ def time_prop(df, save_loc):
     hours=['12am', '1am', '2am', '3am', '4am','5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm',
             '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',]
 
-    fig, ax = plt.subplots(1, figsize=(15, 6))
+    fig, ax = plt.subplots(1, figsize=(14, 6))
     x1 = tm_0.iloc[:, 0]
     x2 = tm_1.iloc[:,0]
     y1 = tm_0.iloc[:,1]
@@ -86,7 +86,7 @@ def time_prop(df, save_loc):
     ax.set_xticklabels(labels=hours, fontsize=16, rotation=45,)
     ax.yaxis.set_major_formatter(mtick.PercentFormatter(1))
     ax.set_ylabel("Percent of Accidents", fontsize=18)
-    ax.set_title("Percent of Severe Accidents by Time of Day", fontsize=20)
+    ax.set_title("Percent of Severe Accidents by Time of Day", fontsize=22)
     fig.tight_layout()
     plt.savefig(save_loc,dpi=150, bbox_inches = 'tight')
     plt.show()
@@ -124,9 +124,9 @@ if __name__ == '__main__':
 
     # feature_breadown(df_full, 'Severity', 'Severity Level', '../Images/severity_breakdown.png')
     # feature_breadown(df_full, 'Region', 'Accidents by Region', '../Images/region_breakdown.png')
-    time_total(df_full, '../Images/total_accident___time.png')
+    time_total(df_full, '../Images/total_accidenttime.png')
     new_df = binary_sev(df_full)
-    time_prop(new_df, '../Images/accident_time___proportion.png')
+    time_prop(new_df, '../Images/accident_timeproportion.png')
     # geographic_dist(new_df)
     # geographic_dist_prop(new_df, df_full)
 
