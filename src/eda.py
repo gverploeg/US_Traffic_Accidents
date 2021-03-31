@@ -97,7 +97,7 @@ def geographic_dist(df):
     sev_1 = df[(df['Severity'] == 1)]
     state_counts = sev_1["State"].value_counts()
     fig = go.Figure(data=go.Choropleth(locations=state_counts.index, z=state_counts.values.astype(float), 
-                                    locationmode="USA-states", colorscale="Reds"))
+                                    locationmode="USA-states", colorscale="YlGnBu"))
     fig.update_layout(title_text="Total Severe Accidents for each State", geo_scope="usa")
     fig.show()
 
@@ -120,9 +120,9 @@ if __name__ == '__main__':
     # Read csv file into a pandas dataframe
     df_full = pd.read_csv('../data/total_cleaned_data.csv')
 
-    feature_breadown(df_full, 'Severity', 'Severity Level', '../Images/severity_breakdown.png')
-    feature_breadown(df_full, 'Region', 'Accidents by Region', '../Images/region_breakdown.png')
-    time_total(df_full, '../Images/total_accident_time.png')
+    # feature_breadown(df_full, 'Severity', 'Severity Level', '../Images/severity_breakdown.png')
+    # feature_breadown(df_full, 'Region', 'Accidents by Region', '../Images/region_breakdown.png')
+    # time_total(df_full, '../Images/total_accident_time.png')
     new_df = binary_sev(df_full)
     time_prop(new_df, '../Images/accident_time_proportion.png')
     geographic_dist(new_df)

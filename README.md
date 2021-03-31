@@ -32,12 +32,14 @@ The table above displays the raw data, broken down into Numerical, Categorical, 
 
 * Converted boolean features into integers
 
-the datasetAfter combining datasets and dealing with nulls, I looked at Accident Severity as my target variable. Initially, the breakdown of Accident_Severity was Fatal, Serious, Slight, so I merged that into a binary severe (1) or not severe / minor (0). In picking Accident Severity as my target, I concluded that I would need to exclude certain features from my analysis that would result from the accident already taking place such as Number of Casualties, Number of Vehicles, and whether Police attended the scene. The table below shows my cleaned,  filtered dataframe. 
-
-
 ## Exploratory Data Analysis:
 
 After the dataset was cleaned, I performed some Exploratory Data Analysis (EDA) on the features to confirm my initial assumptions and see if any other features had strong relationships toward accident severity. In the dataset, severity is broken down into four separate categories: slight (1), moderate (2), significant(3), and fatal (4). For this analysis, I wanted to create a binary target variable to see the distinction of whether an accident was severe by whether it was fatal or not. Slight, moderate, and significant accidentss were grouped into a non-severe class (0) and fatal accidents were severe (1). 
+
+### Geographic Distribution:
+
+![](Images/geo_total.png)
+![](Images/geo_prop.png)
 
 ### Feature Engineering:
 
