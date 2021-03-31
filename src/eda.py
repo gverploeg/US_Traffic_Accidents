@@ -38,7 +38,7 @@ def time_total(df, save_loc):
     hours=['12am', '1am', '2am', '3am', '4am','5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm',
             '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',]
 
-    fig, ax = plt.subplots(1, figsize=(14, 4))
+    fig, ax = plt.subplots(1, figsize=(15, 6))
     x1 = tm.iloc[:, 0]
     y1 = tm.iloc[:,1]
     ax.bar(x1, y1, color='royalblue', width=.3, align='edge')
@@ -73,7 +73,7 @@ def time_prop(df, save_loc):
     hours=['12am', '1am', '2am', '3am', '4am','5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm',
             '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',]
 
-    fig, ax = plt.subplots(1, figsize=(14, 4))
+    fig, ax = plt.subplots(1, figsize=(15, 6))
     x1 = tm_0.iloc[:, 0]
     x2 = tm_1.iloc[:,0]
     y1 = tm_0.iloc[:,1]
@@ -120,12 +120,12 @@ if __name__ == '__main__':
     # Read csv file into a pandas dataframe
     df_full = pd.read_csv('../data/total_cleaned_data.csv')
 
-    # feature_breadown(df_full, 'Severity', 'Severity Level', '../Images/severity_breakdown.png')
-    # feature_breadown(df_full, 'Region', 'Accidents by Region', '../Images/region_breakdown.png')
-    # time_total(df_full, '../Images/total_accident_time.png')
+    feature_breadown(df_full, 'Severity', 'Severity Level', '../Images/severity_breakdown.png')
+    feature_breadown(df_full, 'Region', 'Accidents by Region', '../Images/region_breakdown.png')
+    time_total(df_full, '../Images/total_accident__time.png')
     new_df = binary_sev(df_full)
-    time_prop(new_df, '../Images/accident_time_proportion.png')
-    geographic_dist(new_df)
-    geographic_dist_prop(new_df, df_full)
+    time_prop(new_df, '../Images/accident_time__proportion.png')
+    # geographic_dist(new_df)
+    # geographic_dist_prop(new_df, df_full)
 
 
