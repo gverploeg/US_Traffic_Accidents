@@ -37,8 +37,28 @@ After the dataset was cleaned, I performed some Exploratory Data Analysis (EDA) 
 
 ### Geographic Distribution:
 
+## <center>Total Severe Accidents in each State</center>
 ![](Images/geo_total.png)
+Above is the distribution of severe accidents by state. As expected, states with larger populations have higher amounts of severe accidents occuring. 
+## <center>Proportion of Severe Accidents by Total Accidents in each State</center>
 ![](Images/geo_prop.png)
+In comparison, the proportion of severe accidents over the total amount of accident varies greatly. From the early analysis, I found that it was difficult to generalize features that have a strong relationship across the entire country. For example, an accident in Florida can look vastly different than an accident in Wyoming. Florida is highly urbanized and is in a sub-tropical climate, whereas Wyoming is much more rural with greater temperature extremes in the summer and winter. With this knowledge, I grouped the states in their respective regions in order to make more precise insights on the features involving severity. The table below shows the regional groupings and proportions of severe accidents. 
+
+<div align="center">    
+
+|**Region**|**Proportion of Severe Accidents**|
+|------|------------------------------|
+|Rockies|5.30%                         |
+|Midwest|4.90%                         |
+|Northeast|4.70%                         |
+|Southeast|3.60%                         |
+|Southwest|1.90%                         |
+|Pacific|1.40%                         |
+
+
+<div align='left'>  
+
+
 
 ### Feature Engineering:
 
@@ -77,7 +97,7 @@ Speed Limit shares a similar trend, that as the limit increase, so does the prop
 
 ## Inferential Logistic Regression
 
-Determined Multicolinearity with Variance Inflation Factor (VIF). As the name suggests, a variance inflation factor (VIF) quantifies how much the variance is inflated. A variance inflation factor exists for each of the predictors in a multiple regression model. A VIF of 1 means that there is no correlation, while VIFs exceeding 10 are signs of serious multicollinearity requiring correction. In the data, I dropped Latitude and Longitude due to their high values, both exceeding 20. 
+Determined Multicolinearity with Variance Inflation Factor (VIF). As the name suggests, a variance inflation factor (VIF) quantifies how much the variance is inflated. A variance inflation factor exists for each of the predictors in a multiple regression model. A VIF of 1 means that there is no correlation, while VIFs exceeding 10 are signs of serious multicollinearity requiring correction. In the data, BLANK features were dropped due to their high values, both exceeding 20. 
 
 Due to the abudance of categorical features, there are several columns that need to be one-hot encoded or changed to a binary value in order to utilize there features. By dropping one of the one-hot encoded columns from each categorical feature, we ensure there are no "reference" columns — the remaining columns become linearly independent. These features included: 
 
