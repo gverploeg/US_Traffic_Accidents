@@ -34,6 +34,7 @@ def time_total(df, save_loc):
         df - dataframe
         save_as - name to save image under
     """
+    plt.style.use('ggplot')
     tm = df.groupby(['Hour'])['ID'].count().reset_index()
     hours=['12am', '1am', '2am', '3am', '4am','5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm',
             '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',]
@@ -46,7 +47,7 @@ def time_total(df, save_loc):
     plt.xticks(x1, fontsize=13)
     ax.set_xticklabels(labels=hours, fontsize=16, rotation=45,)
     ax.set_ylabel("Number of Accidents", fontsize=18)
-    ax.set_title("Total Accidents by Time of Day", fontsize=18)
+    ax.set_title("Total Accidents by Time of Day", fontsize=20)
     fig.tight_layout()
     plt.savefig(save_loc,dpi=150, bbox_inches = 'tight')
     plt.show()
@@ -66,6 +67,7 @@ def time_prop(df, save_loc):
         df - dataframe
         save_as - name to save image under
     """
+    plt.style.use('ggplot')
     sev_0 = df[(df['Severity'] == 0)]
     sev_1 = df[(df['Severity'] == 1)]
     tm_0 = sev_0.groupby(['Hour'])['ID'].count().reset_index()
@@ -84,7 +86,7 @@ def time_prop(df, save_loc):
     ax.set_xticklabels(labels=hours, fontsize=16, rotation=45,)
     ax.yaxis.set_major_formatter(mtick.PercentFormatter(1))
     ax.set_ylabel("Percent of Accidents", fontsize=18)
-    ax.set_title("Percent of Severe Accidents by Time of Day", fontsize=18)
+    ax.set_title("Percent of Severe Accidents by Time of Day", fontsize=20)
     fig.tight_layout()
     plt.savefig(save_loc,dpi=150, bbox_inches = 'tight')
     plt.show()
@@ -120,11 +122,11 @@ if __name__ == '__main__':
     # Read csv file into a pandas dataframe
     df_full = pd.read_csv('../data/total_cleaned_data.csv')
 
-    feature_breadown(df_full, 'Severity', 'Severity Level', '../Images/severity_breakdown.png')
-    feature_breadown(df_full, 'Region', 'Accidents by Region', '../Images/region_breakdown.png')
-    time_total(df_full, '../Images/total_accident__time.png')
+    # feature_breadown(df_full, 'Severity', 'Severity Level', '../Images/severity_breakdown.png')
+    # feature_breadown(df_full, 'Region', 'Accidents by Region', '../Images/region_breakdown.png')
+    time_total(df_full, '../Images/total_accident___time.png')
     new_df = binary_sev(df_full)
-    time_prop(new_df, '../Images/accident_time__proportion.png')
+    time_prop(new_df, '../Images/accident_time___proportion.png')
     # geographic_dist(new_df)
     # geographic_dist_prop(new_df, df_full)
 

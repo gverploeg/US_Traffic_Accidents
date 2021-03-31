@@ -55,8 +55,8 @@ Inferential Regression Assumptions:
 3. No multicollinearity: the independent variables are not highly correlated with each other 
 
 
-![](Images/total_accident__time.png)
-![](Images/accident_time__proportion.png)
+![](Images/total_accident___time.png)
+![](Images/accident_time___proportion.png)
 
 Applied Feature Engineering to the Time column, where the hour was extracted and used to create a binary Rush Hour feature, which in the UK is generally considered to be between 07:00-10:00 and 16:00-19:00
 * Appears to show lower proportion during typical busy hours
