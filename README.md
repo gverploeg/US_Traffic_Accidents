@@ -37,10 +37,10 @@ After the dataset was cleaned, I performed some Exploratory Data Analysis (EDA) 
 
 ### Geographic Distribution:
 
-## <center>Total Severe Accidents in each State</center>
+#### <center>Total Severe Accidents in each State</center>
 ![](Images/geo_total.png)
 Above is the distribution of severe accidents by state. As expected, states with larger populations have higher amounts of severe accidents occuring. 
-## <center>Proportion of Severe Accidents by Total Accidents in each State</center>
+#### <center>Proportion of Severe Accidents by Total Accidents in each State</center>
 ![](Images/geo_prop.png)
 In comparison, the proportion of severe accidents over the total amount of accident varies greatly. From the early analysis, I found that it was difficult to generalize features that have a strong relationship across the entire country. For example, an accident in Florida can look vastly different than an accident in Wyoming. Florida is highly urbanized and is in a sub-tropical climate, whereas Wyoming is much more rural with greater temperature extremes in the summer and winter. With this knowledge, I grouped the states in their respective regions in order to make more precise insights on the features involving severity. The table below shows the regional groupings and proportions of severe accidents. 
 
