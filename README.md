@@ -111,15 +111,9 @@ With the objective to understand why this was occuring, I ran a Principal Compon
 
 PCA is a dimensionality reduction technique that allows a linear combination of my variables. Each Principal component are new variables that are constructed as linear combinations or mixtures of the initial varibales. The PCA plot above shows clusters of samples based on their similarity. Here, we can see the severe (red) and non-severe (blue) samples are highly intermixed throughout each cluster. Logistic regression is looking for line or straight plane that would split my classes up and be linearly separable. This explains why the logistic model is performing poorly because there is no linear distinction between severe / non-severe. 
 
-
-
-* Balanced data so Severe and Minor were equal
-* Standarized the data in order to be able to compare coefficients
-    * Only standarized Speed Limit
-
-
-### Logit Model for Feature Importance
-![](images/coeffs.png)
+## Nonlinear on Rockies Region
+### Decision Tree
+![](Images/rocky_tree2.png)
 
 | Features                                        | Coeff - Log Odds | Coeff - Odds |
 |-------------------------------------------------|------------------|----------------------|
