@@ -101,9 +101,11 @@ Assumptions of Inferential Regression:
 Determined Multicolinearity with Variance Inflation Factor (VIF). As the name suggests, a variance inflation factor (VIF) quantifies how much the variance is inflated. A variance inflation factor exists for each of the predictors in a multiple regression model. A VIF of 1 means that there is no correlation, while VIFs exceeding 10 are signs of serious multicollinearity requiring correction. In the data, 'Temperature(F)', 'Pressure(in)', and 'Visibility(mi)' features were dropped due to their high values, all exceeding 20. Due to the abudance of categorical features, there are several columns that need to be one-hot encoded or changed to a binary value in order to utilize there features. By dropping one of the one-hot encoded columns from each categorical feature, we ensure there are no "reference" columns — the remaining columns become linearly independent. 
 
 The model was built and adjusted in order to maximize the Recall Score. I decided to optimize the Recall score to minimize the amount of False Negatives in the data. If a Severe accident (Actual Positive) is predicted as non-severe (Predicted Negative), the consequence can be very bad for emergency services. After running the model and comparing coeefficients of the log odds, some top features regarding accident severity were Wind Speed and accidents occuring on the opposite side of the road. However, the classification results displayed poor results.
-> Precision - .66
-> Recall - .65
-> Accuracy - .64 
+
+>  **Precision** - .66
+>  **Recall** - .65
+>  **Accuracy** - .64 
+
 With the objective to understand why this was occuring, I ran a Principal Component Analysis. 
 
 ### Principal Component Analysis:
