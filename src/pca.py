@@ -73,12 +73,12 @@ def three_dim_pca(X, y, save_loc):
     RETURNS
         new dataframe
     '''
-    fig = plt.figure(figsize=(10,12))
+    fig = plt.figure(figsize=(8,8))
     ax = fig.add_subplot(111, projection='3d')
     ax.set_xlabel('Principal Component 1', fontsize = 15)
     ax.set_ylabel('Principal Component 2', fontsize = 15)
     ax.set_zlabel('Principal Component 3', fontsize = 15)
-    ax.set_title('PCA with 3 Components', fontsize = 24)
+    ax.set_title('PCA with 3 Components', fontsize = 22)
     ax.scatter(X[:,0], X[:,1], X[:,2], c=y,cmap='bwr_r')
     ax.xaxis.set_ticklabels([])
     ax.yaxis.set_ticklabels([])
@@ -109,12 +109,12 @@ if __name__ == '__main__':
        'Weather_Condition_Snow', 'Weather_Condition_Thunderstorm']
 
 
-    print(pca_features(df_full, df_features))
-    two_dim_pca(df_full, df_features, '../Images/two_pca_plot.png')
+    # print(pca_features(df_full, df_features))
+    # two_dim_pca(df_full, df_features, '../Images/two_pca_plot.png')
 
     y = df_full['Severity'].values
     three_pca = PCA(n_components=3)
     X_pca = three_pca.fit_transform(df_full[df_features])
-    three_dim_pca(X_pca, y, '../Images/three_pca_plot.png')
+    three_dim_pca(X_pca, y, '../Images/three__pca_plot.png')
 
     
