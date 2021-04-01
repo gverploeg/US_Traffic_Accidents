@@ -3,44 +3,50 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 
-def pca(X, df):
+def pca_features(df, features):
     '''
-    Principal component analysis to better understand the correlation between the data columns.
-    Used data that was already normalized through min max scaler
+    Principal component analysis features
     ARGS: 
         df - dataframe
-        x_features - dataframe features to include
+        features - dataframe features to include
     RETURNS
-        new dataframe and prints important features
+        Top 5 features
     '''
+    X = df[features]
     feature_name = X.columns.values
     pca_ = PCA(n_components=2)
     principal_components = pca_.fit_transform(X)
     principal_df = pd.DataFrame(data=principal_components
                                , columns=['Principal component 1', 'Principal component 2'])
     pca_df = pd.concat([principal_df, df[['Severity']]], axis=1)
-
     features = []
     for i in feature_name:
         features.append(i)
     top_5 = pca_.components_[0].argsort()[-5:]
-    print('Top 5 most important questions: ', np.array(features)[top_5])
-    return pca_df
+    return ('Top 5 most important questions: ', np.array(features)[top_5])
 
-def two_dim_pca(X, df, save_loc):
+def two_dim_pca(df, features, save_loc):
     '''
     Plots 2D PCA factors
     ARGS: 
         df - dataframe
+        features - dataframe features to include
         save_loc - location to save plot
     RETURNS
-        new dataframe
+        2 Dimensional PCA plot
     '''
-    final_df = pca(X, df)
+    X = df[features]
+    feature_name = X.columns.values
+    pca = PCA(n_components=2)
+    principal_components = pca.fit_transform(X)
+    principal_df = pd.DataFrame(data = principal_components
+                               , columns=['Principal Component 1', 'Principal Component 2'])
+    pca_df = pd.concat([principal_df, df[['Severity']]], axis=1)
+    final_df = pca_df
     not_severe_df = final_df[final_df['Severity'] == 0]
     is_sever_df = final_df[final_df['Severity'] == 1]
-    plot1 = is_sever_df[['principal component 1', 'principal component 2']]
-    plot2 = not_severe_df[['principal component 1', 'principal component 2']]
+    plot1 = is_sever_df[['Principal Component 1', 'Principal Component 2']]
+    plot2 = not_severe_df[['Principal Component 1', 'Principal Component 2']]
 
     fig = plt.figure(figsize=(8, 8))
     ax = fig.add_subplot(1, 1, 1)
@@ -50,13 +56,14 @@ def two_dim_pca(X, df, save_loc):
     plt.xlim([-2, 2])
     plt.ylim([-2, 2])
     targets = ['Severe', 'Non-Severe']
-    ax.scatter(plot2['principal component 1'], plot2['principal component 2'], color='b')
-    ax.scatter(plot1['principal component 1'], plot1['principal component 2'], color='r')
+    ax.scatter(plot1['Principal Component 1'], plot1['Principal Component 2'], color='r')
+    ax.scatter(plot2['Principal Component 1'], plot2['Principal Component 2'], color='b')
     ax.legend(targets)
     ax.grid()
     plt.savefig(save_loc, dpi=150, bbox_inches = 'tight')
+    plt.show()
 
-def three_dim_pca(df, x_features, target_var, save_loc):
+def three_dim_pca(X, y, save_loc):
     '''
     Plots 3D PCA factors
     ARGS: 
@@ -66,9 +73,6 @@ def three_dim_pca(df, x_features, target_var, save_loc):
     RETURNS
         new dataframe
     '''
-    X = df[[x_features]]
-    y = df[target_var].values
-
     fig = plt.figure(figsize=(10,12))
     ax = fig.add_subplot(111, projection='3d')
     ax.set_xlabel('Principal Component 1', fontsize = 15)
@@ -86,13 +90,14 @@ def three_dim_pca(df, x_features, target_var, save_loc):
     for line in ax.zaxis.get_ticklines():
         line.set_visible(False)
     plt.savefig(save_loc, dpi=150, bbox_inches = 'tight')
+    plt.show()
 
 if __name__ == '__main__':
 
     # Read csv file into a pandas dataframe
     df_full = pd.read_csv('../data/logistic_data.csv')
 
-    X = df_full[['Temperature(F)', 'Humidity(%)',
+    df_features = ['Temperature(F)', 'Humidity(%)',
        'Pressure(in)', 'Visibility(mi)', 'Wind_Speed(mph)',
        'Precipitation(in)', 
        'Junction', 
@@ -101,15 +106,15 @@ if __name__ == '__main__':
        'Region_Southwest', 'Side_R', 'Season_Spring', 'Season_Summer',
        'Season_Winter', 'Weather_Condition_Clear', 'Weather_Condition_Fog',
        'Weather_Condition_Other', 'Weather_Condition_Rain',
-       'Weather_Condition_Snow', 'Weather_Condition_Thunderstorm']]
+       'Weather_Condition_Snow', 'Weather_Condition_Thunderstorm']
 
-    feature_df = pca(X, df_full)
 
-    two_dim_pca(X, df_full, '../images/two_pca_plot.png')
+    print(pca_features(df_full, df_features))
+    two_dim_pca(df_full, df_features, '../Images/two_pca_plot.png')
 
-    # three_pca = PCA(n_components=3)
-    # X_pca = three_pca.fit_transform(df_full[features])
-    # three_dim_pca(df_full, features, 'Severity', '../images/two_pca_plot.png')
+    y = df_full['Severity'].values
+    three_pca = PCA(n_components=3)
+    X_pca = three_pca.fit_transform(df_full[df_features])
+    three_dim_pca(X_pca, y, '../Images/three_pca_plot.png')
 
     
- 
