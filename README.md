@@ -102,9 +102,7 @@ Determined Multicolinearity with Variance Inflation Factor (VIF). As the name su
 
 The model was built and adjusted in order to maximize the Recall Score. I decided to optimize the Recall score to minimize the amount of False Negatives in the data. If a Severe accident (Actual Positive) is predicted as non-severe (Predicted Negative), the consequence can be very bad for emergency services. After running the model and comparing coeefficients of the log odds, some top features regarding accident severity were Wind Speed and accidents occuring on the opposite side of the road. However, the classification results displayed poor results.
 
->  **Precision** - .66
->  **Recall** - .65
->  **Accuracy** - .64 
+>  **Precision** - .66      **Recall** - .65        **Accuracy** - .64 
 
 With the objective to understand why this was occuring, I ran a Principal Component Analysis. 
 
