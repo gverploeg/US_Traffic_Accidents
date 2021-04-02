@@ -112,23 +112,41 @@ With the objective to understand why this was occuring, I ran a Principal Compon
 PCA is a dimensionality reduction technique that allows a linear combination of my variables. Each Principal component are new variables that are constructed as linear combinations or mixtures of the initial varibales. The PCA plot above shows clusters of samples based on their similarity. Here, we can see the severe (red) and non-severe (blue) samples are highly intermixed throughout each cluster. Logistic regression is looking for line or straight plane that would split my classes up and be linearly separable. This explains why the logistic model is performing poorly because there is no linear distinction between severe / non-severe. 
 
 ## Nonlinear on Rockies Region
-### Decision Tree
+### Decision Tree:
 ![](Images/rocky_tree2.png)
 
-| Features                                        | Coeff - Log Odds | Coeff - Odds |
-|-------------------------------------------------|------------------|----------------------|
-| Road Type - Dual Carriageway                    | -0.376           | 0.686                |
-| Road Surface Conditions - Frost/Ice             | -0.385           | 0.68                 |
-| Light Conditions - Dark with No street lighting | 0.421            | 1.523                |
-| Road Type - Roundabout                          | -0.584           | 0.557                |
-| Road Type - Slip Road                           | -0.769           | 0.463                |
+Within the decision tree, each internal node, or bubble represents where a question is asked, each branch represents an outcome of the test, and each leaf node (terminal node) holds a class label - whether the majority of samples were either severe or non-severe. It shows why one accident has a certain prediction, building on prior conditions. Decision trees are greedy algorithms, in that they make the choice thtat seems to be best at that moment. The few nodes on which the tree is split are important variables within the data - each of these features had a strong relationship with accident severity. 
+
+### Random Forest:
+![](Images/rf_featureimportance.png)
+
+Next, I wanted to compare the decision tree to a better performing model in terms of its predictive power. In the Feature Importance above, the red bars are the overlapping features between both the random forest and the decision tree. An important thing to note is that random forests are biased toward continuous features due to the fact that they can split more often. 
+
+### Partial Dependence Plots:
+ Wind Speed (mph)         |  Humidity(%)
+:-------------------------:|:-------------------------:
+![](Images/partial_wind.png)  |  ![](Images/partial_humid.png)
+
+The partial dependence plots show the marginal effect if one feature on whether an accident is severe. Within the Rockies region, when Wind speeds are greater than 10 mph and humidity is less than 20%, the accident is more likely to be severe. 
+
+## Conclusion
+
+Overall, it was difficult to generalize most important features across the entire country. Hence, it was necessary to concentrate on specific region or state. By performing a variety of models, I was able to get a get a complete picture. The logistic Regression and Decision Tree gave me interpretability and Random forest gave me better performance. 
+
+When looking at the Rockies Region, EMTs should be aware severe accidents occur more often:
+* During weekends, at night, and not during rush hour
+* Wind speeds > 15 mph and humidity < 20%
+    * The wind and humidity features imply that severe accidents occur at a higher rate when the conditions are more pleasant outside. For example, humidity is given as a percentage and tells you how close the air is to being saturated. Low humidity does not produce clouds and precipitation. It can therefore be implied that vehicles may be driving faster when conditions and weather are mild, which in turn leads to more severe accidents. 
+* Regarding side of road:
+    * State or local officials can look into physical barriers between lanes or more street lighting to prevent left vs right collisions.
 
 
-Pseudo R-squared: 0.020
+## Future Work:
 
-* Above, the positive scores indicate a feature that influences class 1 "Severe", whereas the negative scores indicate a feature that influences class 0 "Minor"
-* The further from zero, the more impact it has in determining severe or minor
-* With the features that are one-hot encoded, you’re comparing to the feature dropped. 
+* Deploy a Flask App
+* Compare accident data with cyclist + pedestrian factors + driver information
+* Testing further models and more feature engineering
+
 
 
 
