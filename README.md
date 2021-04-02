@@ -108,7 +108,7 @@ The model was built and adjusted in order to maximize the Recall Score. I decide
 With the objective to understand why this was occuring, I ran a Principal Component Analysis. 
 
 ### Principal Component Analysis:
-![](Images/three__pca__plot.png)
+![](Images/three__pcaplot.png)
 
 PCA is a dimensionality reduction technique that allows a linear combination of my variables. Each Principal component are new variables that are constructed as linear combinations or mixtures of the initial varibales. The PCA plot above shows clusters of samples based on their similarity. Here, we can see the severe (red) and non-severe (blue) samples are highly intermixed throughout each cluster. Logistic regression is looking for line or straight plane that would split my classes up and be linearly separable. This explains why the logistic model is performing poorly because there is no linear distinction between severe / non-severe. 
 

@@ -75,10 +75,10 @@ def three_dim_pca(X, y, save_loc):
     '''
     fig = plt.figure(figsize=(6,6))
     ax = fig.add_subplot(111, projection='3d')
-    ax.set_xlabel('Principal Component 1', fontsize = 15)
-    ax.set_ylabel('Principal Component 2', fontsize = 15)
-    ax.set_zlabel('Principal Component 3', fontsize = 15)
-    ax.set_title('PCA with 3 Components', fontsize = 22)
+    ax.set_xlabel('Principal Component 1', fontsize = 12)
+    ax.set_ylabel('Principal Component 2', fontsize = 12)
+    ax.set_zlabel('Principal Component 3', fontsize = 12)
+    ax.set_title('PCA with 3 Components', fontsize = 16)
     ax.scatter(X[:,0], X[:,1], X[:,2], c=y,cmap='bwr_r')
     ax.xaxis.set_ticklabels([])
     ax.yaxis.set_ticklabels([])
@@ -115,6 +115,6 @@ if __name__ == '__main__':
     y = df_full['Severity'].values
     three_pca = PCA(n_components=3)
     X_pca = three_pca.fit_transform(df_full[df_features])
-    three_dim_pca(X_pca, y, '../Images/three__pca__plot.png')
+    three_dim_pca(X_pca, y, '../Images/three__pcaplot.png')
 
     
