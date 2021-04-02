@@ -126,7 +126,7 @@ Next, I wanted to compare the decision tree to a better performing model in term
 ### Partial Dependence Plots:
  Wind Speed (mph)         |  Humidity(%)
 :-------------------------:|:-------------------------:
-![](Images/partial_wind.png)  |  ![](Images/partial__humid.png)
+![](Images/partial_wind.png)  |  ![](Images/partial_humid_2.png)
 
 The partial dependence plots show the marginal effect if one feature on whether an accident is severe. Within the Rockies region, when Wind speeds are greater than 10 mph and humidity is less than 20%, the accident is more likely to be severe. 
 
