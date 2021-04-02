@@ -42,7 +42,7 @@ After the dataset was cleaned, I performed some Exploratory Data Analysis (EDA) 
 Above is the distribution of severe accidents by state. As expected, states with larger populations have higher amounts of severe accidents occuring. 
 #### <center>Proportion of Severe Accidents by Total Accidents in each State</center>
 ![](Images/geo_prop.png)
-In comparison, the proportion of severe accidents over the total amount of accident varies greatly. From early analysis, I found that it was difficult to generalize features that have a strong relationship across the entire country. For example, an accident in Florida can look vastly different than an accident in Wyoming. Florida is highly urbanized and is in a sub-tropical climate, whereas Wyoming is much more rural with greater temperature extremes in the summer and winter. With this knowledge, I grouped the states in their respective regions in order to make more precise insights on the features involving severity. The table below shows the regional groupings and proportions of severe accidents. 
+In comparison, the proportion of severe accidents over the total amount of accident varies greatly. From early analysis, I found that it was difficult to generalize features that have a strong relationship with severity across the entire country. For example, an accident in Florida can look vastly different than an accident in Wyoming. Florida is highly urbanized and is in a sub-tropical climate, whereas Wyoming is much more rural with greater temperature extremes in the summer and winter. With this knowledge, I grouped the states in their respective regions in order to make more precise insights on the features involving severity. The table below shows the regional groupings and proportions of severe accidents. 
 
 <div align="center">    
 
@@ -72,6 +72,7 @@ The table below shows my cleaned and feature engineered dataframe.
 |A-1130|3       |6/24/16 12:49|6/24/16 13:34|37.320629|-121.995506|R   |San Jose    |Santa Clara|CA   |95129     |US/Pacific|75.9          |40         |30.06       |10            |NW            |10.4           |0                |Clear            |0      |0   |0       |0       |0       |1      |0      |0         |0      |0   |0              |0             |1         |2016|6    |4      |24 |12  |0        |0      |Summer|Pacific|
 |A-951078|3       |9/28/19 9:34|9/28/19 10:18|41.840019|-71.411263|R   |Providence  |Providence|RI   |2904      |US/Eastern|68            |81         |29.68       |10            |SW            |8              |0                |Clear            |0      |0   |0       |0       |1       |0      |0      |0         |0      |0   |0              |0             |1         |2019|9    |5      |28 |9   |1        |1      |Fall  |Northeast|
 
+### Time of Day Breakdown:
 
 ![](Images/total_accidenttime.png)
 Total accidents are greatest during typical rush hour times, which can be expected as that is when the greatest number of cars are on road.
@@ -85,10 +86,10 @@ Inferential Analysis:
 * It is important to note that for this examination, I am not conducting any predictive models. Instead I am looking at this through the lens of an inferential analysis: determing the features that have the strongest relationship toward accident severity. I want to infer properties from the data, not make predictions on unseen data.  
 
 Balanced Data:
-* Out of the 3.5 million records, only 108,000 were classified under the fatal severity. As such, I undersampled from the majority non-severe class in order to balance them out. 
+* Out of the 3.5 million records, only around 108,000 were classified under the fatal severity. As such, I undersampled from the majority non-severe class in order to balance them out. 
 
 Interpretability:
-* Goal is to use models that easily explain themselves. 
+* Goal is to use models that easily explain themselves. Interpretability refers the transparency of the model's properties that are useful to understand. 
 
 
 ## Inferential Logistic Regression on Rockies Region
@@ -107,31 +108,31 @@ The model was built and adjusted in order to maximize the Recall Score. I decide
 With the objective to understand why this was occuring, I ran a Principal Component Analysis. 
 
 ### Principal Component Analysis:
-![](Images/three__pca_plot.png)
+![](Images/three__pca__plot.png)
 
 PCA is a dimensionality reduction technique that allows a linear combination of my variables. Each Principal component are new variables that are constructed as linear combinations or mixtures of the initial varibales. The PCA plot above shows clusters of samples based on their similarity. Here, we can see the severe (red) and non-severe (blue) samples are highly intermixed throughout each cluster. Logistic regression is looking for line or straight plane that would split my classes up and be linearly separable. This explains why the logistic model is performing poorly because there is no linear distinction between severe / non-severe. 
 
-## Nonlinear on Rockies Region
+## Nonlinear Models on Rockies Region
 ### Decision Tree:
 ![](Images/rocky_tree2.png)
 
 Within the decision tree, each internal node, or bubble represents where a question is asked, each branch represents an outcome of the test, and each leaf node (terminal node) holds a class label - whether the majority of samples were either severe or non-severe. It shows why one accident has a certain prediction, building on prior conditions. Decision trees are greedy algorithms, in that they make the choice thtat seems to be best at that moment. The few nodes on which the tree is split are important variables within the data - each of these features had a strong relationship with accident severity. 
 
 ### Random Forest:
-![](Images/rf_featureimportance.png)
+![](Images/rf_featureimportance_update.png)
 
 Next, I wanted to compare the decision tree to a better performing model in terms of its predictive power. In the Feature Importance above, the red bars are the overlapping features between both the random forest and the decision tree. An important thing to note is that random forests are biased toward continuous features due to the fact that they can split more often. 
 
 ### Partial Dependence Plots:
  Wind Speed (mph)         |  Humidity(%)
 :-------------------------:|:-------------------------:
-![](Images/partial_wind.png)  |  ![](Images/partial_humid.png)
+![](Images/partial_wind.png)  |  ![](Images/partial__humid.png)
 
 The partial dependence plots show the marginal effect if one feature on whether an accident is severe. Within the Rockies region, when Wind speeds are greater than 10 mph and humidity is less than 20%, the accident is more likely to be severe. 
 
 ## Conclusion
 
-Overall, it was difficult to generalize most important features across the entire country. Hence, it was necessary to concentrate on specific region or state. By performing a variety of models, I was able to get a get a complete picture. The logistic Regression and Decision Tree gave me interpretability and Random forest gave me better performance. 
+Overall, it was difficult to generalize most important features across the entire country. Hence, it was necessary to concentrate on specific region or state. By performing a variety of models, I was able to get a get a complete picture. The logistic Regression and Decision Tree gave me interpretability and Random forest gave me better performance in terms of its predictive power. 
 
 When looking at the Rockies Region, EMTs should be aware severe accidents occur more often:
 * During weekends, at night, and not during rush hour
@@ -140,25 +141,8 @@ When looking at the Rockies Region, EMTs should be aware severe accidents occur 
 * Regarding side of road:
     * State or local officials can look into physical barriers between lanes or more street lighting to prevent left vs right collisions.
 
-
 ## Future Work:
 
-* Deploy a Flask App
-* Compare accident data with cyclist + pedestrian factors + driver information
+* Deploy a Flask App in order for user to input specific features and see where accidents occured.
+* Compare accident data with cyclist + pedestrian factors + driver information.
 * Testing further models and more feature engineering
-
-
-
-
-
-## Conclusion & Future Direction
-
-* Continue training this model to improve its performance and maximize its potential - an R-squared of 0.02 is not enough
-    * Regularize, manipulating features
-
-* Compare feature importance with other models such as random forest and XGBoost
-
-* Look into other features as potential target variables such as Number of Casualties or Number of Vehicles to see if it improves the model. 
-
-* Once model improves, perform a predictive regression to determine future accidents
-
