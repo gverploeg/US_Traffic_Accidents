@@ -3,7 +3,7 @@
 
 # US Traffic Accidents and their Influencing Factors
 ## Background & Goal:
-It's no secret that the United States loves to drive. With over than 260 million vehicles in operation, car transportation has been engrained in the American pysche. This love affair hasn't come without flaws though. In the United States, the average number of car accidents each year is around 6 million, resulting in more than 38,000 deaths on US roadways. While automobiles may be an essential part of many Americans lives, its important to explore some of the data behind these accidents and assess how it can be used to save lives in the future. [US Accident Dataset](https://www.kaggle.com/sobhanmoosavi/us-accidents) provides detailed statistics about personal injury road accidents, vehicles and locations involved. These statistics were compiled by various entities around the country, such as law enforcement agencies, traffic cameras, and numerous state Departments of Transportation.
+It's no secret that the United States loves to drive. With over 260 million vehicles in operation, car transportation has been engrained in the American pysche. This love affair hasn't come without flaws though. In the United States, the average number of car accidents each year is around 6 million, resulting in more than 38,000 deaths on US roadways. While automobiles may be an essential part of many Americans lives, its important to explore some of the data behind these accidents and assess how it can be used to save lives in the future. [US Accident Dataset](https://www.kaggle.com/sobhanmoosavi/us-accidents) provides detailed statistics about personal injury road accidents, vehicles and locations involved. These statistics were compiled by various entities around the country, such as law enforcement agencies, traffic cameras, and numerous state Departments of Transportation.
 
 The goal of this repository is to help emergency services identify the key elements of severe accidents, and understand trends of where and when they are most needed. 
 
@@ -116,7 +116,7 @@ PCA is a dimensionality reduction technique that allows a linear combination of 
 ### Decision Tree:
 ![](Images/rocky_tree2.png)
 
-Within the decision tree, each internal node, or bubble represents where a question is asked, each branch represents an outcome of the test, and each leaf node (terminal node) holds a class label - whether the majority of samples were either severe or non-severe. It shows why one accident has a certain prediction, building on prior conditions. Decision trees are greedy algorithms, in that they make the choice thtat seems to be best at that moment. The few nodes on which the tree is split are important variables within the data - each of these features had a strong relationship with accident severity. 
+Within the decision tree, each internal node, or bubble represents where a question is asked, each branch represents an outcome of the test, and each leaf node (terminal node) holds a class label - whether the majority of samples were either severe or non-severe. It shows why one accident has a certain prediction, building on prior conditions. Decision trees are greedy algorithms, in that they make the choice that seems to be best at that moment. The few nodes on which the tree is split are important variables within the data - each of these features had a strong relationship with accident severity. 
 
 ### Random Forest:
 ![](Images/rf_featureimportance_update.png)
